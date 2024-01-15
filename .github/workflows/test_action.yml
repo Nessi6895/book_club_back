@@ -13,4 +13,5 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_SECRET_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          fingerprint: ${{ secrets.SSH_PUB_KEY }}
           script: whoami
