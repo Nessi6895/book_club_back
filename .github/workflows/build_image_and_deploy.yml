@@ -1,6 +1,9 @@
 name: Deploy Action
 run-name: ${{ github.actor }} is testing out ssh GitHub Actions 🚀
-on: [push]
+on:
+  push:
+    branches:
+      - main
 jobs:
   build-image-and-deploy:
     runs-on: ubuntu-latest
