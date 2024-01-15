@@ -15,7 +15,7 @@ jobs:
           cache: 'sbt'
       - name: Setup env
         run: |
-          echo ${{ secrets.YDB_CERTIFICATE }} > cert_file.sa
+          echo "${{ secrets.YDB_CERTIFICATE }}" > cert_file.sa
           export CERT_FILE=cert_file.sa
           export CONN_STRING=${{ secrets.YDB_CONN_STRING }}
       - name: Build and push image
