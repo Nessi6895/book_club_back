@@ -53,7 +53,7 @@ docker / dockerfile := {
   // The assembly task generates a fat JAR file
   val artifact: File = assembly.value
   val artifactTargetPath = s"/app/${artifact.name}"
-  val certFilePath = sys.env.get("SERT_FILE").get
+  val certFilePath = sys.env.get("CERT_FILE").get
   val destCertPath = ".cert/cert_file.sa"
 
   new Dockerfile {
@@ -65,7 +65,7 @@ docker / dockerfile := {
     arg("SERT_FILE")
     env(
       "CONN_STRING" -> sys.env.get("CONN_STRING").get,
-      "SERT_FILE" -> destCertPath
+      "CERT_FILE" -> destCertPath
     )
     entryPoint("java", "-jar", artifactTargetPath)
   }
