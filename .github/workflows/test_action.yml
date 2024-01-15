@@ -12,5 +12,5 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_SECRET_KEY }}
-          passphrase: ${{ SSH_SECRET_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: whoami
