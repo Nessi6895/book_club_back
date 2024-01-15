@@ -13,13 +13,12 @@ jobs:
           java-version: '21'
           distribution: 'microsoft'
           cache: 'sbt'
-      - name: Setup env
+      - name: Build and push image
         run: |
           sudo echo '${{ secrets.YDB_CERTIFICATE }}' > cert_file.sa
           export CERT_FILE=cert_file.sa
           export CONN_STRING=${{ secrets.YDB_CONN_STRING }}
-      - name: Build and push image
-        run: sbt dockerBuildAndPush
+          sbt dockerBuildAndPush
       - name: Download image and restart container
         uses: appleboy/ssh-action@v1.0.3
         with:
