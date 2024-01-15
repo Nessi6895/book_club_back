@@ -14,4 +14,4 @@ jobs:
           key: ${{ secrets.SSH_SECRET_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           username: ${{ secrets.SSH_USERNAME }}
-          script: whoami
+          script: ls -la
