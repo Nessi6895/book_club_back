@@ -15,6 +15,8 @@ jobs:
           cache: 'sbt'
       - name: Setup env
         run: |
+          touch cert_file.sa
+          chmod +w cert_file.sa
           echo "${{ secrets.YDB_CERTIFICATE }}" > cert_file.sa
           export CERT_FILE=cert_file.sa
           export CONN_STRING=${{ secrets.YDB_CONN_STRING }}
