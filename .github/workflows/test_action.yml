@@ -31,4 +31,4 @@ jobs:
           key: ${{ secrets.SSH_SECRET_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           username: ${{ secrets.SSH_USERNAME }}
-          script: ls -la
+          script: sudo ./full_reboot.sh
