@@ -2,12 +2,20 @@ name: Deploy Action
 run-name: ${{ github.actor }} is testing out ssh GitHub Actions 🚀
 on: [push]
 jobs:
-  Try-out-actions:
+  Build image and deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: executing remote ssh commands using password
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'microsoft'
+          cache: 'sbt'
+      - name: Build and push image
+        run: sbt dockerBuildAndPush
+      - name: Download image and restart container
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
